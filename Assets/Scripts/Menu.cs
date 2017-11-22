@@ -214,22 +214,22 @@ public class Menu : MonoBehaviour
 
             }
             GUI.Box(new Rect(9f * scrW, 4 * scrH + (i * (scrH * 0.5f)), 2f * scrW, 1f * scrH), "Right");//Label
-            if (GUI.Button(new Rect(12f * scrW, 1 * scrH + (i * (scrH * 0.5f)), 1f * scrW, 1f * scrH), "Space"))
+            if (GUI.Button(new Rect(11.25f * scrW, 1 * scrH + (i * (scrH * 0.5f)), 1f * scrW, 1f * scrH), "Space"))
             {
 
             }
             GUI.Box(new Rect(13f * scrW, 1 * scrH + (i * (scrH * 0.5f)), 2f * scrW, 1f * scrH), "Jump");//Label
-            if (GUI.Button(new Rect(12f * scrW, 2 * scrH + (i * (scrH * 0.5f)), 1f * scrW, 1f * scrH), "Left Control"))
+            if (GUI.Button(new Rect(11.25f * scrW, 2 * scrH + (i * (scrH * 0.5f)), 1f * scrW, 1f * scrH), "Left Control"))
             {
 
             }
             GUI.Box(new Rect(13f * scrW, 2 * scrH + (i * (scrH * 0.5f)), 2f * scrW, 1f * scrH), "Crouch");//Label
-            if (GUI.Button(new Rect(12f * scrW, 3 * scrH + (i * (scrH * 0.5f)), 1f * scrW, 1f * scrH), "Left Shift"))
+            if (GUI.Button(new Rect(11.25f * scrW, 3 * scrH + (i * (scrH * 0.5f)), 1f * scrW, 1f * scrH), "Left Shift"))
             {
 
             }
             GUI.Box(new Rect(13f * scrW, 3 * scrH + (i * (scrH * 0.5f)), 2f * scrW, 1f * scrH), "Sprint");//Label
-            if (GUI.Button(new Rect(12f * scrW, 4 * scrH + (i * (scrH * 0.5f)), 1f * scrW, 1f * scrH), "E"))
+            if (GUI.Button(new Rect(11.25f * scrW, 4 * scrH + (i * (scrH * 0.5f)), 1f * scrW, 1f * scrH), "E"))
             {
 
             }

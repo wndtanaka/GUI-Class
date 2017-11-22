@@ -27,7 +27,7 @@ public class CharacterHandler : MonoBehaviour
     #region MiniMap
     public RenderTexture miniMap;
     #endregion
-    public bool gameScene;
+    public bool gameScene = true;
     #region Start
     void Start()
     {
@@ -96,7 +96,7 @@ public class CharacterHandler : MonoBehaviour
     #region OnGUI
     void OnGUI()
     {
-        if (!gameScene)
+        if (gameScene)
         { 
             //set up our aspect ratio for the GUI elements
             //scrW - 16

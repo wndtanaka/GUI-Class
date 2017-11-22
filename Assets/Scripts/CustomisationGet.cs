@@ -7,6 +7,15 @@ public class CustomisationGet : MonoBehaviour
 {
     public Renderer character;
     // Use this for initialization
+    public string race;
+    public string classJob;
+    public int strength;
+    public int constitution;
+    public int dexterity;
+    public int intelligence;
+    public int wisdom;
+    public int charisma;
+
     void Start()
     {
         character = GameObject.Find("Mesh").GetComponent<SkinnedMeshRenderer>();
@@ -26,12 +35,20 @@ public class CustomisationGet : MonoBehaviour
         SetTexture("Cloth", PlayerPrefs.GetInt("ClothIndex"));
         SetTexture("Armour", PlayerPrefs.GetInt("ArmourIndex"));
         gameObject.name = PlayerPrefs.GetString("CharacterName");
+        race = PlayerPrefs.GetString("Race");
+        classJob = PlayerPrefs.GetString("Class");
+        strength = PlayerPrefs.GetInt("Strength");
+        constitution = PlayerPrefs.GetInt("Constitution");
+        dexterity = PlayerPrefs.GetInt("Dexterity");
+        intelligence = PlayerPrefs.GetInt("Intelligence");
+        wisdom = PlayerPrefs.GetInt("Wisdom");
+        charisma = PlayerPrefs.GetInt("Charisma");
     }
     public void SetTexture(string type, int dir)
     {
         Texture2D tex = null;
         int matIndex = 0;
-        switch(type)
+        switch (type)
         {
             case "Skin":
                 tex = Resources.Load("Character/Skin_" + dir.ToString()) as Texture2D;
