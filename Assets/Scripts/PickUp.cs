@@ -9,6 +9,7 @@ public class PickUp : MonoBehaviour
     //create two gameobject variables one called player and the other mainCam
     public GameObject player;
     public GameObject mainCam;
+    public static bool hitItem = false;
     #endregion
     #region Start
     void Start()
@@ -60,6 +61,7 @@ public class PickUp : MonoBehaviour
                 {
                     //Debug that we hit an Item
                     Debug.Log("Hit the Item");
+                    hitItem = true;
                 }
                 #endregion
             }
