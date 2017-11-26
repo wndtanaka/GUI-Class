@@ -64,7 +64,7 @@ public class CustomisationSet : MonoBehaviour
     #region Start
     void Start()
     {
-        charH = GameObject.Find("Warrior").GetComponent<CharacterHandler>();
+        charH = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterHandler>();
         charH.gameScene = false;
         #region for loop to pull textures from file
         //for loop looping from 0 to less than the max amount of skin textures we need
@@ -588,26 +588,26 @@ public class CustomisationSet : MonoBehaviour
         i++;
         #endregion
         #region Race
-        if (GUI.Button(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "<"))
+        if (GUI.Button(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "<"))
         {
             SetRace("Race", -1);
         }
-        GUI.Box(new Rect(13.75f * scrW, scrH + j * (0.5f * scrH), scrW, 0.5f * scrH), race[raceIndex]);
-        if (GUI.Button(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), ">"))
+        GUI.Box(new Rect(13.75f * scrW, scrH * 2 + j * (0.5f * scrH), scrW, 0.5f * scrH), race[raceIndex]);
+        if (GUI.Button(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), ">"))
         {
             SetRace("Race", 1);
         }
         j++;
         #endregion
         #region Class
-        if (GUI.Button(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "<"))
+        if (GUI.Button(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "<"))
         {
             SetClass("Class", -1);
             SetStats(classes[classIndex], -1);
             bonusPoint = 10;
         }
-        GUI.Box(new Rect(13.75f * scrW, scrH + j * (0.5f * scrH), scrW, 0.5f * scrH), classes[classIndex]);
-        if (GUI.Button(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), ">"))
+        GUI.Box(new Rect(13.75f * scrW, scrH * 2 + j * (0.5f * scrH), scrW, 0.5f * scrH), classes[classIndex]);
+        if (GUI.Button(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), ">"))
         {
             SetClass("Class", 1);
             SetStats(classes[classIndex], 1);
@@ -617,10 +617,10 @@ public class CustomisationSet : MonoBehaviour
         #endregion
         #region Stats
         #region STR Stats
-        GUI.Box(new Rect(11.25f * scrW, scrH + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Strength");
+        GUI.Box(new Rect(11.25f * scrW, scrH * 2 + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Strength");
         if (bonusPoint < 10 && baseStrength < strength)
         {
-            if (GUI.Button(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
+            if (GUI.Button(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
             {
                 strength--;
                 bonusPoint++;
@@ -628,12 +628,12 @@ public class CustomisationSet : MonoBehaviour
         }
         if (bonusPoint >= 10 || baseStrength == strength)
         {
-            GUI.Box(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-");
+            GUI.Box(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-");
         }
-        GUI.Box(new Rect(13.75f * scrW, scrH + j * (0.5f * scrH), scrW, 0.5f * scrH), strength.ToString());
+        GUI.Box(new Rect(13.75f * scrW, scrH * 2 + j * (0.5f * scrH), scrW, 0.5f * scrH), strength.ToString());
         if (bonusPoint > 0)
         {
-            if (GUI.Button(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+"))
+            if (GUI.Button(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+"))
             {
                 strength++;
                 bonusPoint--;
@@ -641,15 +641,15 @@ public class CustomisationSet : MonoBehaviour
         }
         if (bonusPoint <= 0)
         {
-            GUI.Box(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+");
+            GUI.Box(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+");
         }
         j++;
         #endregion
         #region CON Stats
-        GUI.Box(new Rect(11.25f * scrW, scrH + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Constitution");
+        GUI.Box(new Rect(11.25f * scrW, scrH * 2 + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Constitution");
         if (bonusPoint < 10 && baseConstitution < constitution)
         {
-            if (GUI.Button(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
+            if (GUI.Button(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
             {
                 constitution--;
                 bonusPoint++;
@@ -657,12 +657,12 @@ public class CustomisationSet : MonoBehaviour
         }
         if (bonusPoint >= 10 || baseConstitution == constitution)
         {
-            GUI.Box(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-");
+            GUI.Box(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-");
         }
-        GUI.Box(new Rect(13.75f * scrW, scrH + j * (0.5f * scrH), scrW, 0.5f * scrH), constitution.ToString());
+        GUI.Box(new Rect(13.75f * scrW, scrH * 2 + j * (0.5f * scrH), scrW, 0.5f * scrH), constitution.ToString());
         if (bonusPoint > 0)
         {
-            if (GUI.Button(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+"))
+            if (GUI.Button(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+"))
             {
                 constitution++;
                 bonusPoint--;
@@ -670,15 +670,15 @@ public class CustomisationSet : MonoBehaviour
         }
         if (bonusPoint <= 0)
         {
-            GUI.Box(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+");
+            GUI.Box(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+");
         }
         j++;
         #endregion
         #region DEX Stats
-        GUI.Box(new Rect(11.25f * scrW, scrH + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Dexterity");
+        GUI.Box(new Rect(11.25f * scrW, scrH * 2 + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Dexterity");
         if (bonusPoint < 10 && baseDexterity < dexterity)
         {
-            if (GUI.Button(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
+            if (GUI.Button(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
             {
                 dexterity--;
                 bonusPoint++;
@@ -686,12 +686,12 @@ public class CustomisationSet : MonoBehaviour
         }
         if (bonusPoint >= 10 || baseDexterity == dexterity)
         {
-            GUI.Box(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-");
+            GUI.Box(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-");
         }
-        GUI.Box(new Rect(13.75f * scrW, scrH + j * (0.5f * scrH), scrW, 0.5f * scrH), dexterity.ToString());
+        GUI.Box(new Rect(13.75f * scrW, scrH * 2 + j * (0.5f * scrH), scrW, 0.5f * scrH), dexterity.ToString());
         if (bonusPoint > 0)
         {
-            if (GUI.Button(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+"))
+            if (GUI.Button(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+"))
             {
                 dexterity++;
                 bonusPoint--;
@@ -699,15 +699,15 @@ public class CustomisationSet : MonoBehaviour
         }
         if (bonusPoint <= 0)
         {
-            GUI.Box(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+");
+            GUI.Box(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+");
         }
         j++;
         #endregion
         #region INT Stats
-        GUI.Box(new Rect(11.25f * scrW, scrH + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Intelligence");
+        GUI.Box(new Rect(11.25f * scrW, scrH * 2 + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Intelligence");
         if (bonusPoint < 10 && baseIntelligence < intelligence)
         {
-            if (GUI.Button(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
+            if (GUI.Button(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
             {
                 intelligence--;
                 bonusPoint++;
@@ -715,12 +715,12 @@ public class CustomisationSet : MonoBehaviour
         }
         if (bonusPoint >= 10 || baseIntelligence == intelligence)
         {
-            GUI.Box(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-");
+            GUI.Box(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-");
         }
-        GUI.Box(new Rect(13.75f * scrW, scrH + j * (0.5f * scrH), scrW, 0.5f * scrH), intelligence.ToString());
+        GUI.Box(new Rect(13.75f * scrW, scrH * 2 + j * (0.5f * scrH), scrW, 0.5f * scrH), intelligence.ToString());
         if (bonusPoint > 0)
         {
-            if (GUI.Button(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+"))
+            if (GUI.Button(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+"))
             {
                 intelligence++;
                 bonusPoint--;
@@ -728,15 +728,15 @@ public class CustomisationSet : MonoBehaviour
         }
         if (bonusPoint <= 0)
         {
-            GUI.Box(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+");
+            GUI.Box(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+");
         }
         j++;
         #endregion
         #region WIS Stats
-        GUI.Box(new Rect(11.25f * scrW, scrH + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Wisdom");
+        GUI.Box(new Rect(11.25f * scrW, scrH * 2 + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Wisdom");
         if (bonusPoint < 10 && baseWisdom < wisdom)
         {
-            if (GUI.Button(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
+            if (GUI.Button(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
             {
                 wisdom--;
                 bonusPoint++;
@@ -744,12 +744,12 @@ public class CustomisationSet : MonoBehaviour
         }
         if (bonusPoint >= 10 || baseWisdom == wisdom)
         {
-            GUI.Box(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-");
+            GUI.Box(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-");
         }
-        GUI.Box(new Rect(13.75f * scrW, scrH + j * (0.5f * scrH), scrW, 0.5f * scrH), wisdom.ToString());
+        GUI.Box(new Rect(13.75f * scrW, scrH * 2 + j * (0.5f * scrH), scrW, 0.5f * scrH), wisdom.ToString());
         if (bonusPoint > 0)
         {
-            if (GUI.Button(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+"))
+            if (GUI.Button(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+"))
             {
                 wisdom++;
                 bonusPoint--;
@@ -757,15 +757,15 @@ public class CustomisationSet : MonoBehaviour
         }
         if (bonusPoint <= 0)
         {
-            GUI.Box(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+");
+            GUI.Box(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+");
         }
         j++;
         #endregion
         #region CHA Stats
-        GUI.Box(new Rect(11.25f * scrW, scrH + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Charisma");
+        GUI.Box(new Rect(11.25f * scrW, scrH * 2 + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Charisma");
         if (bonusPoint < 10 && baseCharisma < charisma)
         {
-            if (GUI.Button(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
+            if (GUI.Button(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-"))
             {
                 charisma--;
                 bonusPoint++;
@@ -773,12 +773,12 @@ public class CustomisationSet : MonoBehaviour
         }
         if (bonusPoint >= 10 || baseCharisma == charisma)
         {
-            GUI.Box(new Rect(13.25f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-");
+            GUI.Box(new Rect(13.25f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "-");
         }
-        GUI.Box(new Rect(13.75f * scrW, scrH + j * (0.5f * scrH), scrW, 0.5f * scrH), charisma.ToString());
+        GUI.Box(new Rect(13.75f * scrW, scrH * 2 + j * (0.5f * scrH), scrW, 0.5f * scrH), charisma.ToString());
         if (bonusPoint > 0)
         {
-            if (GUI.Button(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+"))
+            if (GUI.Button(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+"))
             {
                 charisma++;
                 bonusPoint--;
@@ -786,12 +786,12 @@ public class CustomisationSet : MonoBehaviour
         }
         if (bonusPoint <= 0)
         {
-            GUI.Box(new Rect(14.75f * scrW, scrH + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+");
+            GUI.Box(new Rect(14.75f * scrW, scrH * 2 + j * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), "+");
         }
         j++;
         #endregion
-        GUI.Box(new Rect(11.25f * scrW, scrH + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Bonus Point");
-        GUI.Box(new Rect(13.75f * scrW, scrH + j * (0.5f * scrH), scrW, 0.5f * scrH), bonusPoint.ToString());
+        GUI.Box(new Rect(11.25f * scrW, scrH * 2 + j * (0.5f * scrH), scrW * 2f, 0.5f * scrH), "Bonus Point");
+        GUI.Box(new Rect(13.75f * scrW, scrH * 2 + j * (0.5f * scrH), scrW, 0.5f * scrH), bonusPoint.ToString());
         #endregion
         #region Random & Reset
         //create 2 buttons one Random and one Reset
