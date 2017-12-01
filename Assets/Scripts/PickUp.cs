@@ -10,6 +10,8 @@ public class PickUp : MonoBehaviour
     public GameObject player;
     public GameObject mainCam;
     public static bool hitItem = false;
+
+    CharacterHandler charH;
     #endregion
     #region Start
     void Start()
@@ -20,6 +22,7 @@ public class PickUp : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         mainCam = GameObject.FindGameObjectWithTag("MainCamera");
         //connect our Camera to the mainCam variable via tag
+        charH = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterHandler>();
     }
     #endregion
     #region Update
@@ -61,7 +64,8 @@ public class PickUp : MonoBehaviour
                 {
                     //Debug that we hit an Item
                     Debug.Log("Hit the Item");
-                    hitItem = true;
+                    //hitItem = true;
+                    charH.curExp += 50;
                 }
                 #endregion
             }

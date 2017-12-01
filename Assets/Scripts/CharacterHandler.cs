@@ -28,6 +28,8 @@ public class CharacterHandler : MonoBehaviour
     public RenderTexture miniMap;
     #endregion
     public bool gameScene = true;
+
+    public GUIStyle healthBar;
     #region Start
     void Start()
     {
@@ -62,7 +64,9 @@ public class CharacterHandler : MonoBehaviour
             //our level goes up by one
             curLevel++;
             //the maximum amount of experience is increased by 50
-            maxExp = 50;
+            maxExp += 50;
+            //
+            CustomisationGet.bonusPoint += 3;
         }
 
     }
@@ -108,7 +112,7 @@ public class CharacterHandler : MonoBehaviour
             GUI.Box(new Rect(6 * scrW, 0.25f * scrH, 4 * scrW, 0.5f * scrH), "");
             //GUI Box for current health that moves in same place as the background bar
             //current Health divided by the posistion on screen and timesed by the total max health
-            GUI.Box(new Rect(6 * scrW, 0.25f * scrH, curHealth * (4 * scrW) / maxHealth, 0.5f * scrH), "");
+            GUI.Box(new Rect(6 * scrW, 0.25f * scrH, curHealth * (4 * scrW) / maxHealth, 0.5f * scrH), "",healthBar);
             //GUI Box on screen for the experience background
             GUI.Box(new Rect(6 * scrW, 0.75f * scrH, 4 * scrW, 0.5f * scrH), "");
             // Mana

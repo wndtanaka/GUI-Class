@@ -21,7 +21,7 @@ public class CustomisationGet : MonoBehaviour
     public int intelligence;
     public int wisdom;
     public int charisma;
-    public int bonusPoint;
+    public static int bonusPoint;
 
     [Header("Bools and Values")]
     public bool showInfo;
@@ -30,11 +30,13 @@ public class CustomisationGet : MonoBehaviour
     public Vector2 scrollPos = Vector2.zero;
     public MouseLook mainCam, playerCam;
     public Movement playerMove;
-    CustomisationGet getinfo;
+    CharacterHandler charH;
+    public RenderTexture charPic;
 
     void Start()
     {
         character = GameObject.Find("Mesh").GetComponent<SkinnedMeshRenderer>();
+        charH = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterHandler>();
         LoadTexture();
 
         mainCam = Camera.main.GetComponent<MouseLook>();
@@ -66,6 +68,7 @@ public class CustomisationGet : MonoBehaviour
             mainCam.enabled = true;
             playerCam.enabled = true;
             playerMove.enabled = true;
+            charH.gameScene = true;
             return false;
         }
         else
@@ -77,6 +80,7 @@ public class CustomisationGet : MonoBehaviour
             mainCam.enabled = false;
             playerCam.enabled = false;
             playerMove.enabled = false;
+            charH.gameScene = false;
             return true;
         }
     }
@@ -149,6 +153,7 @@ public class CustomisationGet : MonoBehaviour
 
             GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "Character Info");
             GUI.Box(new Rect(scrW * 7, scrH * 0.5f, scrW * 2, scrH * 0.5f), gameObject.name);
+            GUI.DrawTexture(new Rect(2 * scrW, 3 * scrH, 3 * scrW, 3 * scrH), charPic);
 
             #region Stats
             #region STR Stats
