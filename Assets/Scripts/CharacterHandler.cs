@@ -30,6 +30,9 @@ public class CharacterHandler : MonoBehaviour
     public bool gameScene = true;
 
     public GUIStyle healthBar;
+    public GUIStyle manaBar;
+    public GUIStyle staminaBar;
+    public GUIStyle expBar;
     #region Start
     void Start()
     {
@@ -65,8 +68,12 @@ public class CharacterHandler : MonoBehaviour
             curLevel++;
             //the maximum amount of experience is increased by 50
             maxExp += 50;
-            //
+            // adding bonus point by 3
             CustomisationGet.bonusPoint += 3;
+            // adding max health mana and stamina by 5
+            maxHealth += 5;
+            maxMana += 5;
+            maxStamina += 5;
         }
 
     }
@@ -116,13 +123,13 @@ public class CharacterHandler : MonoBehaviour
             //GUI Box on screen for the experience background
             GUI.Box(new Rect(6 * scrW, 0.75f * scrH, 4 * scrW, 0.5f * scrH), "");
             // Mana
-            GUI.Box(new Rect(6 * scrW, 0.75f * scrH, curMana * (4 * scrW) / maxMana, 0.5f * scrH), "");
+            GUI.Box(new Rect(6 * scrW, 0.75f * scrH, curMana * (4 * scrW) / maxMana, 0.5f * scrH), "", manaBar);
             // Stamina
             GUI.Box(new Rect(6 * scrW, 1.25f * scrH, 4 * scrW, 0.5f * scrH), "");
-            GUI.Box(new Rect(6 * scrW, 1.25f * scrH, curStamina * (4 * scrW) / maxStamina, 0.5f * scrH), "");
+            GUI.Box(new Rect(6 * scrW, 1.25f * scrH, curStamina * (4 * scrW) / maxStamina, 0.5f * scrH), "",staminaBar);
             // Exp
             GUI.Box(new Rect(6 * scrW, 1.75f * scrH, 4 * scrW, 0.25f * scrH), "");
-            GUI.Box(new Rect(6 * scrW, 1.75f * scrH, curExp * (4 * scrW) / maxExp, 0.25f * scrH), "");
+            GUI.Box(new Rect(6 * scrW, 1.75f * scrH, curExp * (4 * scrW) / maxExp, 0.25f * scrH), "",expBar);
 
             //GUI Draw Texture on the screen that has the mini map render texture attached
             GUI.DrawTexture(new Rect(13 * scrW, 0.25f * scrH, 2.925f * scrW, 2.5f * scrH), miniMap);

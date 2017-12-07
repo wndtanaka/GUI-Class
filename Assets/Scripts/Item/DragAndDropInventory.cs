@@ -26,6 +26,7 @@ public class DragAndDropInventory : MonoBehaviour
     public Movement playerMovement;
     public MouseLook mainCam, playerCam;
     private float scrW, scrH;
+    CharacterHandler charH;
     #endregion
     #region Clamp to Screen
     private Rect ClampToScreen(Rect r)
@@ -169,6 +170,7 @@ public class DragAndDropInventory : MonoBehaviour
     #region Start
     void Start()
     {
+        charH = GetComponent<CharacterHandler>();
         scrW = Screen.width / 16;
         scrH = Screen.height / 9;
         playerMovement = GetComponent<Movement>();
@@ -198,6 +200,7 @@ public class DragAndDropInventory : MonoBehaviour
             mainCam.enabled = true;
             playerCam.enabled = true;
             playerMovement.enabled = true;
+            charH.gameScene = true;
             return (false);
         }
         else
@@ -209,6 +212,7 @@ public class DragAndDropInventory : MonoBehaviour
             mainCam.enabled = false;
             playerCam.enabled = false;
             playerMovement.enabled = false;
+            charH.gameScene = false;
             return (true);
         }
 
@@ -231,6 +235,7 @@ public class DragAndDropInventory : MonoBehaviour
         if (showInv)
         {
             inventorySize = ClampToScreen(GUI.Window(1, inventorySize, InvetoryDrag, "My Inventory"));
+            GUI.Box(new Rect(scrW * 8, scrH * 2, scrW * 4, scrH * 3), "Tutorial \n Click 'C' for Character Info \n Hit the box with E, to gain Exp");
         }
         #endregion
         #region Draw ToolTip
